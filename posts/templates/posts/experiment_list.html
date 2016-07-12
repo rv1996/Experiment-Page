@@ -1,0 +1,55 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+    <h1>Hello </h1>
+    <h2>This is the template i am gonna use</h2>
+
+    <div class="row">
+        {% for object in object_list %}
+
+            <div class="col-sm-6 ">
+
+                {% if object.image %}
+                    <img src="{{ object.image.url }}" class="img-responsive">
+                {% endif %}
+
+                <div class="caption">
+                    <h1><a href="{{ object.get_absolute_url }}">{{ object.title }}</a>
+
+                        <small style="font-size: small;">{{ object.timestamp|timesince }} ago</small>
+                    </h1>
+
+                    <p>
+                        {{ object.content|linebreaks|truncatechars:120 }}
+                    </p>
+                    <small>Updated on: {{ object.updated }}</small>
+                    <p>
+                        <a class="btn btn-primary" href="{{ object.get_absolute_url }}">View</a>
+                    </p>
+                </div>
+
+
+
+            </div>
+            {% cycle "" "<div class='row'></div><hr>" %}
+
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if object_list.has_previous %}
+            <a href="?page={{ object_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+        </span>
+
+        {% if object_list.has_next %}
+            <a href="?page={{ object_list.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+    </div>
+
+{% endblock %}

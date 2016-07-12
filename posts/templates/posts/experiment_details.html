@@ -1,0 +1,33 @@
+{% extends 'posts/base.html' %}
+
+
+{% block headtitle %}{{ instance.title }}|{{ block.super }}{% endblock %}
+
+{% block content %}
+
+
+    <div class="container">
+
+        {% if instance.image %}
+            <img src="{{ instance.image.url }}" class="img-responsive">
+        {% endif %}
+        <h1>{{ instance.title }}</h1>
+        <h3>{{ instance.content }}</h3>
+        <h4>Created on :{{ instance.timestamp }}</h4>
+        <h4>Updated on :{{ instance.updated }}</h4>
+        <h4>Id of exp :{{ instance.id }}</h4>
+
+        <div class="row">
+
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+                Facebook
+            </a>
+
+            <a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}'>
+                Google Plus
+            </a>
+        </div>
+    </div>
+
+
+{% endblock %}
