@@ -13,7 +13,7 @@ url to hit at the beginning
 
     you can explore indiviual experiment by the view button or by clicking the title
 
-  -localhost:<port:default=8000>/experiments/<title-of-post>/   --<title> = auto-generated
+  -localhost:<port:default=8000>/experiments/<title-of-post>/   
 
   -localhost:<port:default=8000>/experiments/add add new experiment ---admin-function
 
